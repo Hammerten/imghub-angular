@@ -1,0 +1,7 @@
+<div class="card mb-3">
+  <img [src]="post?.imagePath" [alt]="post?.title" class="card-img-top">
+  <div class="card-body">
+    <h6 class="card-title mb-0">{{ post?.title }}</h6>
+    <small class="d-flex text-muted justify-content-end align-items-center"><span class="oi oi-eye" aria-hidden="true" style="font-size: 1rem; margin-right: 3px"></span>{{ post?.viewCount }}</small>
+  </div>
+</div>

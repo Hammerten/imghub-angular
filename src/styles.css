@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+  max-width: 1440px;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    -webkit-column-count: 6;
+    -moz-column-count: 6;
+    column-count: 5;
+  }
+}
+
+.card-body {
+  padding: 15px;
+}
