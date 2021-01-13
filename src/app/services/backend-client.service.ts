@@ -13,4 +13,8 @@ export class BackendClientService {
   addPost(data: any): Observable<any> {
     return this.http.post('http://localhost:8000/api/image', data);
   }
+
+  getPosts(sort: number) {
+    return this.http.get(`http://localhost:8000/api/image?sort=${sort}`);
+  }
 }

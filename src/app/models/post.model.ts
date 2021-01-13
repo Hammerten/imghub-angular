@@ -1,11 +1,11 @@
 export class Post {
   public title: string;
-  public viewCount: number;
-  public imagePath: string;
+  public view_count: number;
+  public url: string;
 
   constructor(title: string, viewCount: number, imagePath: string) {
     this.title = title;
-    this.viewCount = viewCount;
-    this.imagePath = imagePath;
+    this.view_count = viewCount;
+    this.url = imagePath;
   }
 }
