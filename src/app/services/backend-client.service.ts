@@ -17,4 +17,8 @@ export class BackendClientService {
   getPosts(sort: number) {
     return this.http.get(`http://localhost:8000/api/image?sort=${sort}`);
   }
+
+  search(tag: string) {
+    return this.http.get(`http://localhost:8000/api/image/search?tag=${tag}`);
+  }
 }

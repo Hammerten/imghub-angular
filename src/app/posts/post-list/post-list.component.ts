@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../../models/post.model';
 import {BackendClientService} from "../../services/backend-client.service";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-post-list',
@@ -22,6 +23,7 @@ export class PostListComponent implements OnInit {
   //   new Post('Test', 500, 'https://i.imgur.com/mTazSal.jpg'),
   // ];
   posts: Post[] = [];
+  searchKeywordFC = new FormControl(null, [Validators.minLength(3)]);
 
   constructor(private backendClient: BackendClientService) {
   }
@@ -31,11 +33,21 @@ export class PostListComponent implements OnInit {
   }
 
   fetchProducts(sort: number) {
-    this.backendClient.getPosts(sort)
-      .subscribe(result => this.posts = result);
+    //@ts-ignore
+    this.backendClient.getPosts(sort).subscribe(result => this.posts = result);
   }
 
   sortChangeHandler(sort: number) {
     this.fetchProducts(sort);
+  }
+
+  searchHandler() {
+    //@ts-ignore
+    if (!this.searchKeywordFC.value) {
+      this.fetchProducts(1);
+    } else {
+      this.backendClient.search(this.searchKeywordFC.value).subscribe(result => this.posts = result);
+    }
+
   }
 }

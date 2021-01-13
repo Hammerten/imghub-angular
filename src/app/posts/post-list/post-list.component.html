@@ -1,3 +1,11 @@
+<form class="form-inline">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+         [formControl]="searchKeywordFC">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchHandler()"
+          [disabled]="searchKeywordFC.invalid">Search
+  </button>
+</form>
+
 <select class="custom-select" (change)="sortChangeHandler($event.target.value)">
   <option selected disabled>Sort by</option>
   <option value=1>Newest</option>

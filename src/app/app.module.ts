@@ -13,7 +13,7 @@ import {PostsComponent} from './posts/posts.component';
 import {PostListComponent} from './posts/post-list/post-list.component';
 import {PostItemComponent} from './posts/post-list/post-item/post-item.component';
 import {AddPostComponent} from './posts/add-post/add-post.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
