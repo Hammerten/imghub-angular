@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <form
+      action="#!"
+      [formGroup]="postForm"
+      (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" formControlName="title">
+      </div>
+      <div class="custom-file mb-3">
+        <input
+          type="file"
+          class="custom-file-input"
+          id="fileUpload"
+          (change)="selectFile($event)"
+        />
+        <label class="custom-file-label" style="overflow: hidden" for="fileUpload">{{ selectedFile ? selectedFile.name : "Choose file" }}</label>
+      </div>
+
+      <div *ngIf="currentFileUpload" class="progress mt-2">
+        <div
+          class="progress-bar progress-bar-info"
+          role="progressbar"
+          attr.aria-valuenow="{{ percentage }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: percentage + '%' }"
+        >
+          {{ percentage }}%
+        </div>
+      </div>
+      <button
+        class="btn btn-success"
+        [disabled]="!selectedFile"
+        type="submit"
+      >
+        Upload
+      </button>
+    </form>
+  </div>
+</div>
