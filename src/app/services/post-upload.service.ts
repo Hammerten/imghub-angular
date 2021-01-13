@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import {Injectable} from '@angular/core';
+import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {BackendClientService} from './backend-client.service';
@@ -10,7 +10,8 @@ import {BackendClientService} from './backend-client.service';
 export class PostUploadService {
   private basePath = '/uploads';
 
-  constructor(private storage: AngularFireStorage, private backendClient: BackendClientService) { }
+  constructor(private storage: AngularFireStorage, private backendClient: BackendClientService) {
+  }
 
   pushImageToStorage(imageUpload: any, Post: any): Observable<number | undefined> {
     const filePath = `${this.basePath}/${imageUpload.name}`;
@@ -25,7 +26,9 @@ export class PostUploadService {
             title: Post.title,
             url: imageUrl,
           };
-          this.backendClient.addPost(data);
+          this.backendClient.addPost(data)
+            .subscribe(succ => console.log(succ),
+              error => console.error(error));
         });
       })
     ).subscribe();
