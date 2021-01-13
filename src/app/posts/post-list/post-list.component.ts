@@ -27,11 +27,15 @@ export class PostListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchProducts(1);
+    this.fetchProducts(2);
   }
 
   fetchProducts(sort: number) {
     this.backendClient.getPosts(sort)
       .subscribe(result => this.posts = result);
+  }
+
+  sortChangeHandler(sort: number) {
+    this.fetchProducts(sort);
   }
 }
