@@ -1,0 +1,64 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-12 col-md-4">
+    <form
+      class="px-4 py-3 bg-dark-2 rounded shadow-sm"
+      action="#!"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div
+        *ngIf="error"
+        class="alert mb-4 text-center alert-danger"
+        role="alert"
+      >
+        {{ error }}
+      </div>
+      <div class="mb-3">
+        <label for="nameForm" class="form-label text-white">Name</label>
+        <input
+          type="text"
+          id="nameForm"
+          [ngClass]="
+            name.errors && submitted
+              ? 'form-control is-invalid'
+              : 'form-control'
+          "
+          formControlName="name"
+          placeholder="Name"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="identifierForm" class="form-label text-white">Email address</label>
+        <input
+          type="text"
+          id="identifierForm"
+          [ngClass]="
+            email.errors && submitted
+              ? 'form-control is-invalid'
+              : 'form-control'
+          "
+          placeholder="email@example.com"
+          formControlName="email"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="passwordForm" class="form-label text-white">Password</label>
+        <input
+          type="password"
+          id="passwordForm"
+          [ngClass]="
+            password.errors && submitted
+              ? 'form-control is-invalid'
+              : 'form-control'
+          "
+          formControlName="password"
+          placeholder="Password"
+        />
+      </div>
+      <div class="d-flex align-items-center">
+        <button [disabled]="!password.value || !email.value || !name.value" type="submit" class="btn btn-success">Register</button>
+        <a class="text-decoration-none ml-auto text-success" routerLink="/login">Sign In</a>
+      </div>
+    </form>
+  </div>
+</div>
