@@ -1,0 +1,32 @@
+<div class="row justify-content-md-center">
+  <div class="col-sm-12 col-md-5 mt-5">
+    <form
+      action="#!"
+      class="px-4 py-3 bg-dark-2 rounded shadow-sm"
+      [formGroup]="postForm"
+      (ngSubmit)="onSubmit()">
+      <div class="form-group mb-4">
+        <label class="form-label text-white d-flex">Tags:</label>
+        <div *ngIf="tags">
+          <span *ngFor="let tag of tags; index as i" class="badge badge-light mr-1 mb-2" style="cursor: pointer" (click)="deleteTag(tag.id)">{{ tag.name }}<span class="ml-1 oi oi-delete"></span></span>
+        </div>
+        <hr class="bg-light mb-4">
+        <div class="d-flex">
+          <input type="text" class="form-control col-lg-4 mr-2" placeholder="Type single tag" formControlName="title">
+          <button class="btn btn-dark col-md-2 col-lg-2">Add tag</button>
+        </div>
+      </div>
+      <hr class="bg-light mb-3">
+      <div class="form-group mb-4">
+        <label for="titleForm" class="form-label text-white">Title:</label>
+        <input type="text" class="form-control" id="titleForm" placeholder="Title" formControlName="title">
+      </div>
+      <button
+        class="btn btn-success col-md-2"
+        type="submit"
+      >
+        Edit
+      </button>
+    </form>
+  </div>
+</div>

@@ -38,7 +38,7 @@ export class BackendClientService {
     return this.http.delete(`http://localhost:8000/api/image/${postId}`);
   }
 
-  deletePostTag(postId: string, tagId: string | null): Observable<any> {
+  deletePostTag(postId: number, tagId: number): Observable<any> {
     const body = {
       image_id: postId,
       tag_id: tagId
@@ -49,7 +49,7 @@ export class BackendClientService {
     return this.http.delete(`http://localhost:8000/api/tag`, httpOptions);
   }
 
-  attachTagToPost(postId: string, tag: string): Observable<any> {
+  attachTagToPost(postId: number, tag: number): Observable<any> {
     const body = {
       image_id: postId,
       name: tag
