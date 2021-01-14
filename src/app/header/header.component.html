@@ -9,12 +9,16 @@
       </ul>
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
         <li *ngIf="currentUser; else loginRegister" class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Manage</a>
-          <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">New Post</a></li>
-            <li><a href="#" class="dropdown-item">My Posts</a></li>
-            <li><a href="#" class="dropdown-item">Logout</a></li>
-          </ul>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Manage
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item logout-action" (click)="onLogout()">logout</a>
+          </div>
         </li>
         <ng-template #loginRegister>
           <li class="nav-item">
