@@ -15,7 +15,7 @@ export class RequestInterceptorService implements HttpInterceptor {
     const request = this.authenticationService.currentUserValue ?
       req.clone({
         setHeaders: {
-          'Authorization': 'Bearer ' + this.authenticationService.currentUserValue.access_token
+          Authorization: 'Bearer ' + this.authenticationService.currentUserValue.access_token
         }
       })
         : req;

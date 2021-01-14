@@ -18,6 +18,8 @@ import {LoginFormComponent} from './login-form/login-form.component';
 import {RegisterFormComponent} from './register-form/register-form.component';
 import {RequestInterceptorService} from "./services/request-interceptor.service";
 import { ViewPostComponent } from './posts/view-post/view-post.component';
+import { UserPostListComponent } from './posts/user-post-list/user-post-list.component';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ViewPostComponent } from './posts/view-post/view-post.component';
     AddPostComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    UserPostListComponent,
+    EditPostComponent,
     ViewPostComponent
   ],
   imports: [
