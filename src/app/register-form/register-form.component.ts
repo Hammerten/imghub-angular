@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -31,7 +31,8 @@ export class RegisterFormComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onSubmit(): void {
     if (this.registerForm.invalid) {
@@ -42,6 +43,7 @@ export class RegisterFormComponent implements OnInit {
     this.userService.register(this.registerForm.value).subscribe(
       (data: any) => {
         this.success = 'მომხმარებელი დაემატა';
+        this.router.navigate(["/login"]);
       },
       (error: any) => {
         this.error = error.error;
