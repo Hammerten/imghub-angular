@@ -18,6 +18,14 @@ export class BackendClientService {
     return this.http.get(`http://localhost:8000/api/image?sort=${sort}`);
   }
 
+  getPost(postId: number) {
+    return this.http.get(`http://localhost:8000/api/image/${postId}`);
+  }
+
+  getPostTags(postId: number) {
+    return this.http.get(`http://localhost:8000/api/tag/${postId}`);
+  }
+
   search(tag: string) {
     return this.http.get(`http://localhost:8000/api/image/search?tag=${tag}`);
   }

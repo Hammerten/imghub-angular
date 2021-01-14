@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginFormComponent} from './login-form/login-form.component';
 import {RegisterFormComponent} from './register-form/register-form.component';
 import {RequestInterceptorService} from "./services/request-interceptor.service";
+import { ViewPostComponent } from './posts/view-post/view-post.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {RequestInterceptorService} from "./services/request-interceptor.service"
     PostItemComponent,
     AddPostComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    ViewPostComponent
   ],
   imports: [
     BrowserModule,

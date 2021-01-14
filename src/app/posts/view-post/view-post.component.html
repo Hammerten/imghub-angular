@@ -1,4 +1,4 @@
-<div class="card mb-3 bg-dark-2 shadow border-0" (click)="handleRedirect()">
+<div *ngIf="post" class="card md-6 bg-dark-2 shadow border-0">
   <img [src]="post?.url" [alt]="post?.title" class="card-img-top">
   <div class="card-body">
     <h6 class="card-title text-white mb-0">{{ post?.title }}</h6>
@@ -6,4 +6,8 @@
       class="oi oi-eye" aria-hidden="true" style="font-size: 1rem; margin-right: 3px"></span>{{ post?.view_count }}
     </small>
   </div>
+</div>
+
+<div>
+  <span *ngFor="let tag of tags" class="badge badge-light mr-1">{{ tag.name }}</span>
 </div>
