@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-sm-12 col-md-4">
+  <form
+      class="px-4 py-3 bg-dark-2 rounded shadow-sm"
+      action="#!"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div
+        *ngIf="error"
+        class="alert mb-4 text-center alert-danger"
+        role="alert"
+      >
+        {{ error }}
+      </div>
+      <div class="mb-3">
+        <label for="identifierForm" class="form-label text-white">Email address</label>
+        <input
+          type="text"
+          id="identifierForm"
+          [ngClass]="
+            email.errors && submitted
+              ? 'form-control is-invalid'
+              : 'form-control'
+          "
+          placeholder="email@example.com"
+          formControlName="email"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="passwordForm" class="form-label text-white">Password</label>
+        <input
+          type="password"
+          id="passwordForm"
+          [ngClass]="
+            password.errors && submitted
+              ? 'form-control is-invalid'
+              : 'form-control'
+          "
+          formControlName="password"
+          placeholder="Password"
+        />
+      </div>
+    <div class="d-flex align-items-center">
+      <button type="submit" class="btn btn-success">Sign in</button>
+      <a class="text-decoration-none ml-auto text-success" href="#">Register</a>
+    </div>
+  </form>
+</div>
+</div>

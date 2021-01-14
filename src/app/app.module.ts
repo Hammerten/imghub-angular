@@ -14,6 +14,7 @@ import {PostListComponent} from './posts/post-list/post-list.component';
 import {PostItemComponent} from './posts/post-list/post-item/post-item.component';
 import {AddPostComponent} from './posts/add-post/add-post.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     PostsComponent,
     PostListComponent,
     PostItemComponent,
-    AddPostComponent
+    AddPostComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

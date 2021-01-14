@@ -21,19 +21,19 @@ export class PostListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   fetchProducts(sort: number) {
-    this.backendClient.getPosts(sort).subscribe(result => this.posts = result);
+    this.backendClient.getPosts(sort).subscribe((result: any) => this.posts = result);
   }
 
   // tslint:disable-next-line:typedef
-  sortChangeHandler(sort: number) {
-    this.fetchProducts(sort);
+  sortChangeHandler(event: any) {
+    this.fetchProducts(event.target.value);
   }
 
   searchHandler(): void {
     if (!this.searchKeywordFC.value) {
       this.fetchProducts(1);
     } else {
-      this.backendClient.search(this.searchKeywordFC.value).subscribe(result => this.posts = result);
+      this.backendClient.search(this.searchKeywordFC.value).subscribe((result: any) => this.posts = result);
     }
 
   }

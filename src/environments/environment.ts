@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:8000',
   firebase: {
     apiKey: 'AIzaSyAJP7sGLhsr-6FO-WISYhdKZgLgFnEQMXw',
     authDomain: 'imghub-d90d3.firebaseapp.com',
