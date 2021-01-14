@@ -27,7 +27,15 @@ export class PostUploadService {
             url: imageUrl,
           };
           this.backendClient.addPost(data)
-            .subscribe(succ => console.log(succ),
+            .subscribe(newPost => {
+                console.log(newPost);
+                post.tags.forEach((tag: string) => {
+                  this.backendClient
+                    .attachTagToPost(newPost.id, tag)
+                    .subscribe(result => console.log(result),
+                      error => console.error(error));
+                });
+              },
               error => console.error(error));
         });
       })

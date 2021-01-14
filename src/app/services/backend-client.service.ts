@@ -21,4 +21,12 @@ export class BackendClientService {
   search(tag: string) {
     return this.http.get(`http://localhost:8000/api/image/search?tag=${tag}`);
   }
+
+  attachTagToPost(post_id: number, tag: string) {
+    const body = {
+      image_id: post_id,
+      name: tag
+    }
+    return this.http.post("http://localhost:8000/api/tag", body);
+  }
 }
