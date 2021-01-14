@@ -1,13 +1,16 @@
-<div class="row">
-  <div class="col-sm-12 col-md-4">
+<div class="row justify-content-md-center">
+  <div class="col-sm-12 col-md-4 mt-5">
     <form
       action="#!"
       [formGroup]="postForm"
       (ngSubmit)="onSubmit()">
-      <div class="form-group mb-3">
+      <div class="form-group mb-4">
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" formControlName="title">
       </div>
-      <div class="custom-file mb-3">
+      <div class="form-group mb-4">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder='Seperate tags with "," comma' (change)="filterTags($event)">
+      </div>
+      <div class="custom-file mb-4">
         <input
           type="file"
           class="custom-file-input"
@@ -17,9 +20,9 @@
         <label class="custom-file-label" style="overflow: hidden" for="fileUpload">{{ selectedFile ? selectedFile.name : "Choose file" }}</label>
       </div>
 
-      <div *ngIf="currentFileUpload" class="progress mt-2">
+      <div *ngIf="currentFileUpload" class="progress mb-4">
         <div
-          class="progress-bar progress-bar-info"
+          class="progress-bar bg-success"
           role="progressbar"
           attr.aria-valuenow="{{ percentage }}"
           aria-valuemin="0"

@@ -13,7 +13,7 @@ export class PostUploadService {
   constructor(private storage: AngularFireStorage, private backendClient: BackendClientService) {
   }
 
-  pushImageToStorage(imageUpload: any, Post: any): Observable<number | undefined> {
+  pushImageToStorage(imageUpload: any, post: any): Observable<number | undefined> {
     const filePath = `${this.basePath}/${imageUpload.name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, imageUpload);
@@ -23,7 +23,7 @@ export class PostUploadService {
         storageRef.getDownloadURL().subscribe(imageUrl => {
           imageUpload.url = imageUrl;
           const data = {
-            title: Post.title,
+            title: post.title,
             url: imageUrl,
           };
           this.backendClient.addPost(data)

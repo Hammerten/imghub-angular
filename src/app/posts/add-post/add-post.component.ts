@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostUploadService } from 'src/app/services/post-upload.service';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import {FormBuilder, Validators, FormGroup, FormArray, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-add-post',
@@ -14,6 +14,7 @@ export class AddPostComponent implements OnInit {
   selectedFile: any;
   currentFileUpload: any;
   percentage = 0;
+  tags = [];
   postForm = this.formBuilder.group({
     title: ['', [Validators.required]],
   });
@@ -27,12 +28,25 @@ export class AddPostComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-  upload(): void {
+  filterTags(event: any): void {
+    let tagStringArray = event.target.value;
+    tagStringArray = tagStringArray.replace(/\s+/g, '');
+    const tagArray = tagStringArray.split(',');
+    this.tags = tagArray.filter((x: any) => {
+      return x;
+    });
+  }
+
+  upload(tags: any, title: string): void {
+    const post = {
+      title,
+      tags,
+    };
     const file = this.selectedFile;
     this.currentFileUpload = file;
     this.selectedFile = undefined;
 
-    this.uploadService.pushImageToStorage(file, this.postForm.value).subscribe(
+    this.uploadService.pushImageToStorage(file, post).subscribe(
       (percentage: number | undefined) => {
         if (typeof percentage === 'number') {
           this.percentage = Math.round(percentage);
@@ -46,7 +60,7 @@ export class AddPostComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    this.upload();
+    this.upload(this.tags, this.title.value);
   }
 
   get title(): any {
