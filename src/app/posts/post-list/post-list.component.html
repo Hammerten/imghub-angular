@@ -1,6 +1,6 @@
 <div class="row mb-3">
   <div class="col-lg-2 col-sm-6">
-    <select class="custom-select" (change)="sortChangeHandler($event)">
+    <select *ngIf="!searchKeywordFC.value" class="custom-select" (change)="sortChangeHandler($event)">
       <option selected disabled>Sort by</option>
       <option value=1>Newest</option>
       <option value=2>Popular</option>

@@ -1,19 +1,24 @@
 <div class="row justify-content-md-center">
-  <div class="col-sm-12 col-md-4 mt-5">
+  <div class="col-sm-12 col-md-5 mt-5">
     <form
       action="#!"
+      class="px-4 py-3 bg-dark-2 rounded shadow-sm"
       [formGroup]="postForm"
       (ngSubmit)="onSubmit()">
-      <div class="form-group mb-4">
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" formControlName="title">
+      <div class="form-group mb-3">
+        <label for="titleForm" class="form-label text-white">Title</label>
+        <input type="text" class="form-control" id="titleForm" placeholder="Title" formControlName="title">
       </div>
-      <div class="form-group mb-4">
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder='Seperate tags with "," comma' (change)="filterTags($event)">
+      <div class="form-group mb-3">
+        <label for="tagForm" class="form-label text-white">Tags</label>
+        <input type="text" class="form-control" id="tagForm" placeholder='Seperate tags with "," comma' (change)="filterTags($event)">
       </div>
+      <label class="form-label text-white">Image</label>
       <div class="custom-file mb-4">
         <input
           type="file"
           class="custom-file-input"
+          accept="image/x-png,image/gif,image/jpeg"
           id="fileUpload"
           (change)="selectFile($event)"
         />
