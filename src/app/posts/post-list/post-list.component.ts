@@ -9,19 +9,7 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  posts: Post[] = [
-    new Post('Test', 500, 'https://www.sugarandsoul.co/wp-content/uploads/2018/01/hungarian-goulash-recipe-17.jpg'),
-    new Post('Test', 500, 'https://i.imgur.com/mTazSal.jpg'),
-    new Post('Test', 500, 'https://i.imgur.com/mTazSal.jpg'),
-    new Post('Test', 500, 'https://www.sugarandsoul.co/wp-content/uploads/2018/01/hungarian-goulash-recipe-17.jpg'),
-    new Post('Test', 500, 'https://www.sugarandsoul.co/wp-content/uploads/2018/01/hungarian-goulash-recipe-17.jpg'),
-    new Post('Test', 500, 'https://i.imgur.com/mTazSal.jpg'),
-    new Post('Test', 500, 'https://www.sugarandsoul.co/wp-content/uploads/2018/01/hungarian-goulash-recipe-17.jpg'),
-    new Post('Test', 500, 'https://www.sugarandsoul.co/wp-content/uploads/2018/01/hungarian-goulash-recipe-17.jpg'),
-    new Post('Test', 500, 'https://i.imgur.com/mTazSal.jpg'),
-    new Post('Test', 500, 'https://www.sugarandsoul.co/wp-content/uploads/2018/01/hungarian-goulash-recipe-17.jpg'),
-    new Post('Test', 500, 'https://i.imgur.com/mTazSal.jpg'),
-  ];
+  posts: Post[] = [];
   searchKeywordFC = new FormControl(null, [Validators.minLength(3)]);
 
   constructor(private backendClient: BackendClientService) {
