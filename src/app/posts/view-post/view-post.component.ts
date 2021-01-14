@@ -9,7 +9,7 @@ import {BackendClientService} from "../../services/backend-client.service";
 })
 export class ViewPostComponent implements OnInit {
   post: any;
-  tags: Object = [];
+  tags: any[] = [];
 
   constructor(private route: ActivatedRoute,
               private backendClient: BackendClientService) {

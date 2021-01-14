@@ -12,6 +12,7 @@ export class EditPostComponent implements OnInit {
   error: any;
   submitted = false;
   isLoading = false;
+  newTag = '';
   tags: any[] = [];
   postForm = this.formBuilder.group({
     title: ['', [Validators.required]],
@@ -25,6 +26,7 @@ export class EditPostComponent implements OnInit {
   }
 
   getTags(): void {
+    // @ts-ignore
     this.backendClient.getPostTags(+this.route.snapshot.paramMap.get('postId')).subscribe((result: any) => {
       this.tags = result;
     }, (error: any) => {
@@ -33,7 +35,18 @@ export class EditPostComponent implements OnInit {
   }
 
   deleteTag(tagId: number): void {
-    this.backendClient.deletePostTag(tagId, +this.route.snapshot.paramMap.get('postId')).subscribe(() => {
+    // @ts-ignore
+    this.backendClient.deletePostTag(+this.route.snapshot.paramMap.get('postId'), tagId).subscribe(() => {
+      this.getTags();
+    }, (error: any) => {
+      console.error(error);
+    });
+  }
+
+  addNewTag(): void {
+    // @ts-ignore
+    this.backendClient.attachTagToPost(+this.route.snapshot.paramMap.get('postId'), this.newTag).subscribe(() => {
+      this.newTag = '';
       this.getTags();
     }, (error: any) => {
       console.error(error);
