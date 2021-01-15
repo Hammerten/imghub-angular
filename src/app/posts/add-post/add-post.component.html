@@ -5,6 +5,20 @@
       class="px-4 py-3 bg-dark-2 rounded shadow-sm"
       [formGroup]="postForm"
       (ngSubmit)="onSubmit()">
+      <div
+        *ngIf="error"
+        class="alert mb-3 text-center alert-danger"
+        role="alert"
+      >
+        მოხდა შეცდომა
+      </div>
+      <div
+        *ngIf="uploaded"
+        class="alert mb-3 text-success alert-success"
+        role="alert"
+      >
+        პოსტი წარმატებით აიტვირთა
+      </div>
       <div class="form-group mb-3">
         <label for="titleForm" class="form-label text-white">Title</label>
         <input type="text" class="form-control" id="titleForm" placeholder="Title" formControlName="title">

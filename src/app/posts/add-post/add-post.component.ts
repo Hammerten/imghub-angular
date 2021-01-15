@@ -15,6 +15,7 @@ export class AddPostComponent implements OnInit {
   currentFileUpload: any;
   percentage = 0;
   tags = [];
+  uploaded = false;
   postForm = this.formBuilder.group({
     title: ['', [Validators.required]],
   });
@@ -50,6 +51,9 @@ export class AddPostComponent implements OnInit {
       (percentage: number | undefined) => {
         if (typeof percentage === 'number') {
           this.percentage = Math.round(percentage);
+          if (this.percentage === 100) {
+            this.uploaded = true;
+          }
         }
       },
       error => {
