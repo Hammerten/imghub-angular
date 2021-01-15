@@ -34,6 +34,18 @@ export class BackendClientService {
     return this.http.get('http://localhost:8000/api/user/image');
   }
 
+  getUserPost(postId: number): Observable<any> {
+    return this.http.get(`http://localhost:8000/api/image/${postId}`);
+  }
+
+  updatePost(postId: number, title: string): Observable<any> {
+    const body = {
+      id: postId,
+      title,
+    };
+    return this.http.post('http://localhost:8000/api/image/title', body);
+  }
+
   deleteUserPost(postId: number): Observable<any> {
     return this.http.delete(`http://localhost:8000/api/image/${postId}`);
   }

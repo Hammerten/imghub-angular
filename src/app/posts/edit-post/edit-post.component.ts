@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BackendClientService} from '../../services/backend-client.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-post',
@@ -13,22 +13,34 @@ export class EditPostComponent implements OnInit {
   submitted = false;
   isLoading = false;
   newTag = '';
+  post: any;
   tags: any[] = [];
   postForm = this.formBuilder.group({
     title: ['', [Validators.required]],
   });
 
-  constructor(private formBuilder: FormBuilder, private backendClient: BackendClientService, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private backendClient: BackendClientService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
     this.getTags();
+    // @ts-ignore
+    this.getPost(+this.route.snapshot.paramMap.get('postId'));
   }
 
   getTags(): void {
     // @ts-ignore
     this.backendClient.getPostTags(+this.route.snapshot.paramMap.get('postId')).subscribe((result: any) => {
       this.tags = result;
+    }, (error: any) => {
+      console.error(error);
+    });
+  }
+
+  getPost(postId: number): void {
+    this.backendClient.getUserPost(postId).subscribe((result: any) => {
+      this.post = result;
+      this.postForm.get('title')?.setValue(result.title);
     }, (error: any) => {
       console.error(error);
     });
@@ -53,8 +65,18 @@ export class EditPostComponent implements OnInit {
     });
   }
 
+  updatePostTitle(postId: number, title: string): void {
+    this.backendClient.updatePost(postId, title).subscribe((result: any) => {
+      this.router.navigate(['/user/posts']);
+    }, (error: any) => {
+      console.error(error);
+    });
+  }
+
   onSubmit(): void {
     this.submitted = true;
+    // @ts-ignore
+    this.updatePostTitle(+this.route.snapshot.paramMap.get('postId'), this.title.value);
   }
 
   get title(): any {
